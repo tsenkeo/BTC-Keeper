@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    background: #2c3e50;
+
+}
+
+body {
+    background-color: #2c3e50;
+
+}
+
+.box {
+    margin: auto;
+    text-align: center;
+    background-color: #2c3e50;
+    font-family: Arial, Helvetica, sans-serif;
+    width: auto;
+    padding: auto;
+
+}
+
+
+
+/* ВЫРАВНИВАНИЕ КНОПОК */
+#btn_generate {
+  z-index: 1;
+}
+
+#btn_send {
+  left: 270px;
+  z-index: 1;
+}
+
+
+
+
+#btn_generate, #btn_send {
+    position: absolute;
+    box-align: center;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    background-color: transparent; /* Цвет кнопки - прозрачный*/
+    border: 2px solid #e74c3c; /* бордер */
+    border-radius: 0.6em;
+    color: #e74c3c;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1; /* размер кнопки по высоте */
+    margin: 20px;
+    padding: 1.2em 2.8em;
+     
+    /* текст */
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase; /* меняет регистр текста на верхний */
+    
+    /* шрифт */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    
+    border-radius: 3em;
+    border-color: #1abc9c;
+    color: #fff;
+    background-image: -webkit-linear-gradient(left, rgba(26, 188, 156, 0.6), rgba(26, 188, 156, 0.6) 5%, #1abc9c 5%, #1abc9c 10%, rgba(26, 188, 156, 0.6) 10%, rgba(26, 188, 156, 0.6) 15%, #1abc9c 15%, #1abc9c 20%, rgba(26, 188, 156, 0.6) 20%, rgba(26, 188, 156, 0.6) 25%, #1abc9c 25%, #1abc9c 30%, rgba(26, 188, 156, 0.6) 30%, rgba(26, 188, 156, 0.6) 35%, #1abc9c 35%, #1abc9c 40%, rgba(26, 188, 156, 0.6) 40%, rgba(26, 188, 156, 0.6) 45%, #1abc9c 45%, #1abc9c 50%, rgba(26, 188, 156, 0.6) 50%, rgba(26, 188, 156, 0.6) 55%, #1abc9c 55%, #1abc9c 60%, rgba(26, 188, 156, 0.6) 60%, rgba(26, 188, 156, 0.6) 65%, #1abc9c 65%, #1abc9c 70%, rgba(26, 188, 156, 0.6) 70%, rgba(26, 188, 156, 0.6) 75%, #1abc9c 75%, #1abc9c 80%, rgba(26, 188, 156, 0.6) 80%, rgba(26, 188, 156, 0.6) 85%, #1abc9c 85%, #1abc9c 90%, rgba(26, 188, 156, 0.6) 90%, rgba(26, 188, 156, 0.6) 95%, #1abc9c 95%, #1abc9c 100%);
+    background-image: linear-gradient(to right, rgba(26, 188, 156, 0.6), rgba(26, 188, 156, 0.6) 5%, #1abc9c 5%, #1abc9c 10%, rgba(26, 188, 156, 0.6) 10%, rgba(26, 188, 156, 0.6) 15%, #1abc9c 15%, #1abc9c 20%, rgba(26, 188, 156, 0.6) 20%, rgba(26, 188, 156, 0.6) 25%, #1abc9c 25%, #1abc9c 30%, rgba(26, 188, 156, 0.6) 30%, rgba(26, 188, 156, 0.6) 35%, #1abc9c 35%, #1abc9c 40%, rgba(26, 188, 156, 0.6) 40%, rgba(26, 188, 156, 0.6) 45%, #1abc9c 45%, #1abc9c 50%, rgba(26, 188, 156, 0.6) 50%, rgba(26, 188, 156, 0.6) 55%, #1abc9c 55%, #1abc9c 60%, rgba(26, 188, 156, 0.6) 60%, rgba(26, 188, 156, 0.6) 65%, #1abc9c 65%, #1abc9c 70%, rgba(26, 188, 156, 0.6) 70%, rgba(26, 188, 156, 0.6) 75%, #1abc9c 75%, #1abc9c 80%, rgba(26, 188, 156, 0.6) 80%, rgba(26, 188, 156, 0.6) 85%, #1abc9c 85%, #1abc9c 90%, rgba(26, 188, 156, 0.6) 90%, rgba(26, 188, 156, 0.6) 95%, #1abc9c 95%, #1abc9c 100%);
+    background-position: 0 0;
+    background-size: 100%;
+    -webkit-transition: background 300ms ease-in-out;
+    transition: background 300ms ease-in-out;
+    align-items: stretch;
+  }
+  #btn_generate:hover, #btn_generate:focus, #btn_send:hover, #btn_send:focus {
+    background-position: 100px;
+    color: #fff;
+    outline: 0;
+  }
+
+
+
+
+/* СГЕНЕРИРОВАННЫЕ КЛЮЧ И АДРЕС */
+
+#generated_key {
+    margin-top: 30px;
+    margin-left: 20px;
+    
+    display: flex;
+    flex-direction: center;
+    justify-content: space-between;
+    height: 10px;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#generated_address  {
+    /* выравнивание */
+    margin-top: 30px;
+    margin-left: 20px;
+    
+    
+    display: flex;
+    flex-direction: center;
+    justify-content: space-between;
+    height: 10px;
+
+    
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+#btn_copy_key, #btn_copy_address {
+  position: relative;
+  margin-top: 10px; /* margin - внешний отступ, padding - внутренний*/
+  margin-right: 30px;
+  border: 1px solid #e74c3c; /* бордер */
+  border-radius: 0.3em;
+  cursor: pointer;
+  border-radius: 1.5em;
+  border-color: #1abc9c;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#key_jpg, #address_jpg {
+  
+  margin-top: 50px; /* margin - внешний отступ, padding - внутренний*/
+  margin-left: 30px;
+  border: 1px solid #e74c3c; /* бордер */
+  border-radius: 0.3em;
+  cursor: pointer;
+  border-radius: 1.5em;
+  border-color: #1abc9c;
+}
+
+
+
+  #btn_print {
+    /*чтоб кнопка справа в верхнем углу была*/
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    
+    box-align: center;
+    box-sizing: border-box;
+
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    background-color: transparent; /* Цвет кнопки - прозрачный*/
+    border: 1px solid #e74c3c; /* бордер */
+    border-radius: 0.3em;
+    color: #e74c3c;
+    cursor: pointer;
+    
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+    
+            font-size: 0.5rem; /*размер кнопки */
+    font-weight: 200;
+    line-height: 0,5; /* размер кнопки по высоте */
+    margin: 5px; /*выравнивание к краям */
+    padding: 0.6em 0.9em;
+     
+    /* текст */
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase; /* меняет регистр текста на верхний */
+    
+    /* шрифт */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350; /*толщина шрифта*/
+    
+    border-radius: 1.5em;
+    border-color: #1abc9c;
+    color: #fff;
+    background-image: -webkit-linear-gradient(left, rgba(26, 188, 156, 0.6), rgba(26, 188, 156, 0.6) 5%, #1abc9c 5%, #1abc9c 10%, rgba(26, 188, 156, 0.6) 10%, rgba(26, 188, 156, 0.6) 15%, #1abc9c 15%, #1abc9c 20%, rgba(26, 188, 156, 0.6) 20%, rgba(26, 188, 156, 0.6) 25%, #1abc9c 25%, #1abc9c 30%, rgba(26, 188, 156, 0.6) 30%, rgba(26, 188, 156, 0.6) 35%, #1abc9c 35%, #1abc9c 40%, rgba(26, 188, 156, 0.6) 40%, rgba(26, 188, 156, 0.6) 45%, #1abc9c 45%, #1abc9c 50%, rgba(26, 188, 156, 0.6) 50%, rgba(26, 188, 156, 0.6) 55%, #1abc9c 55%, #1abc9c 60%, rgba(26, 188, 156, 0.6) 60%, rgba(26, 188, 156, 0.6) 65%, #1abc9c 65%, #1abc9c 70%, rgba(26, 188, 156, 0.6) 70%, rgba(26, 188, 156, 0.6) 75%, #1abc9c 75%, #1abc9c 80%, rgba(26, 188, 156, 0.6) 80%, rgba(26, 188, 156, 0.6) 85%, #1abc9c 85%, #1abc9c 90%, rgba(26, 188, 156, 0.6) 90%, rgba(26, 188, 156, 0.6) 95%, #1abc9c 95%, #1abc9c 100%);
+    background-image: linear-gradient(to right, rgba(26, 188, 156, 0.6), rgba(26, 188, 156, 0.6) 5%, #1abc9c 5%, #1abc9c 10%, rgba(26, 188, 156, 0.6) 10%, rgba(26, 188, 156, 0.6) 15%, #1abc9c 15%, #1abc9c 20%, rgba(26, 188, 156, 0.6) 20%, rgba(26, 188, 156, 0.6) 25%, #1abc9c 25%, #1abc9c 30%, rgba(26, 188, 156, 0.6) 30%, rgba(26, 188, 156, 0.6) 35%, #1abc9c 35%, #1abc9c 40%, rgba(26, 188, 156, 0.6) 40%, rgba(26, 188, 156, 0.6) 45%, #1abc9c 45%, #1abc9c 50%, rgba(26, 188, 156, 0.6) 50%, rgba(26, 188, 156, 0.6) 55%, #1abc9c 55%, #1abc9c 60%, rgba(26, 188, 156, 0.6) 60%, rgba(26, 188, 156, 0.6) 65%, #1abc9c 65%, #1abc9c 70%, rgba(26, 188, 156, 0.6) 70%, rgba(26, 188, 156, 0.6) 75%, #1abc9c 75%, #1abc9c 80%, rgba(26, 188, 156, 0.6) 80%, rgba(26, 188, 156, 0.6) 85%, #1abc9c 85%, #1abc9c 90%, rgba(26, 188, 156, 0.6) 90%, rgba(26, 188, 156, 0.6) 95%, #1abc9c 95%, #1abc9c 100%);
+    background-position: 0 0;
+    background-size: 100%;
+    -webkit-transition: background 300ms ease-in-out;
+    transition: background 300ms ease-in-out;
+    align-items: stretch;
+  }
+  /*анимация*/
+  #btn_print:hover, #btn_print:focus {
+    background-position: 50px;
+    color: #fff;
+    outline: 0;
+  }
+    
+    
+    
+  
