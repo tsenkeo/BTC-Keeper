@@ -8,7 +8,7 @@ def generate_wallet():
     return gen   
 @eel.expose
 def transaction(key, address, summ, fee):
-    t = generated.transaction(str(key), str(address), float(summ), float(fee))
+    t = generated.transaction(str(key), str(address), str(summ), str(fee))
     return t
 @eel.expose
 def balance(key:str):

@@ -1,6 +1,6 @@
 import bit, json, qrcode, data 
-from bit import PrivateKey as Key
-#from bit import PrivateKeyTestnet as Key
+#from bit import PrivateKey as Key
+from bit import PrivateKeyTestnet as Key
 
 def qr(data:str, filename:str):
     qrcode.make(data).save(filename) 
@@ -28,14 +28,17 @@ def get_balance(key:str):
         print(e)
         return json.dumps({'btc_balance': 'error', 'usd_balance': 'error', 'rub_balance': 'error'})
         
-def transaction(key:str, address:str, summ:float, fee:float):
+def transaction(key:str, address:str, summ, fee):
     try:
+
         key = Key(key)
-        summ = int(float(summ / 100000000.0))
-        fee = int(float(fee / 100000000.0))
-        transaction = key.send([(address, summ, 'btc')],
-                fee=fee, absolute_fee=True)
-        return json.dumps({'transaction': transaction})
+        fe = int(float(fee) * 100000000.0)
+        summ = float(summ)
+        transaction = key.send(
+            [(address, summ, 'btc')],
+            fee=fe, absolute_fee=True)
+        if True:
+            return json.dumps({'transaction': transaction})
     except Exception as Error:
         print(Error)
         return json.dumps({'transaction': 'error'})       

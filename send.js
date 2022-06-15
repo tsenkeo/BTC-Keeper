@@ -24,7 +24,7 @@ button.onclick = async function send_click() {
     show_balance.setAttribute('onClick', "get_balance();");
     //вызвать фукцию которая выведет баланс в бтс если баланс нулевой, то не давать 
     document.body.appendChild(show_balance);
-    document.getElementById('show_balance').innerHTML = 'Show balance';
+    document.getElementById('show_balance').innerHTML = 'Balance';
 }
 //получение баланса перед тем как отправить на другой адрес
 async function get_balance() {
@@ -48,8 +48,11 @@ async function get_balance() {
         document.getElementById('div_balance_error').innerHTML = 'Error! You may have entered the key incorrectly. Please try again.';
     } else {
         document.getElementById('preloader').remove();
+        //удаление полей, которые могли появиться на предыдущей странице
         var delete_div = document.getElementById('div_balance_error');
         if (!delete_div) {} else { delete_div.remove(); }
+        var delete_div2 = document.getElementById('zero_balance');
+        if (!delete_div2) {} else { delete_div2.remove(); }
         //в эти дивы выводится баланс
         div_btc_balance = document.createElement('div');
         div_btc_balance.setAttribute('id', "div_btc_balance");
@@ -74,7 +77,7 @@ async function get_balance() {
         transaction.setAttribute('id', "btn_transaction");
         transaction.setAttribute('onClick', "transaction();");
         document.body.appendChild(transaction);
-        document.getElementById('btn_transaction').innerHTML = 'Send BTC to another address';
+        document.getElementById('btn_transaction').innerHTML = 'Send BTC';
     }
 }
 
@@ -100,7 +103,7 @@ function transaction(){
     send_to_network.setAttribute('id', "btn_send_to_network");
     send_to_network.setAttribute('onClick', "send_to_network();");
     document.body.appendChild(send_to_network);
-    document.getElementById('btn_send_to_network').innerHTML = 'Send to the network';
+    document.getElementById('btn_send_to_network').innerHTML = 'Send!';
 }
 
 //функция, которая отправляет транзакцию в сеть 
@@ -129,8 +132,14 @@ async function send_to_network() {
                 result_transaction.setAttribute('id', "result_transaction");
                 document.body.appendChild(result_transaction);
                 document.getElementById('result_transaction').innerHTML = 'Success! Use the explorer to track the transaction.';
+                let btn_explore = document.createElement('a');
+                btn_explore.setAttribute('id', "a_explore");
+                btn_explore.setAttribute('href', "https://www.blockchain.com/btc-testnet/tx/" + result_json['transaction']);
+                document.body.appendChild(btn_explore);
+                document.getElementById('a_explore').innerHTML = 'Explore';
             } else {
                 document.getElementById('result_transaction').innerHTML = 'Success! Use the explorer to track the transaction.';
+                document.getElementById('a_explore').setAttribute('href', "https://www.blockchain.com/btc-testnet/tx/" + result_json['transaction'])
             }
     }
 }

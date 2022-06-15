@@ -5,7 +5,7 @@ def create_base(db):
     cursor.execute(f'''CREATE TABLE IF NOT EXISTS WALLETS(ID TEXT NOT NULL, KEY TEXT NOT NULL, ADDRESS TEXT NOT NULL);''')
     db.commit()
 
-with sqlite3.connect('keys.db', check_same_thread=False) as db: #:memory:
+with sqlite3.connect('wallets.db', check_same_thread=False) as db: #:memory:
     db = db
     create_base(db)
 
