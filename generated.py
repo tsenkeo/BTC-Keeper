@@ -1,6 +1,6 @@
-import bit, json
-from bit import PrivateKeyTestnet as Key
-import qrcode
+import bit, json, qrcode, data 
+from bit import PrivateKey as Key
+#from bit import PrivateKeyTestnet as Key
 
 def qr(data:str, filename:str):
     qrcode.make(data).save(filename) 
@@ -11,33 +11,31 @@ def wallet():
     address = key.address
     qr(data=key_wif, filename='key.jpg')
     qr(data=address, filename='address.jpg')
-    Result = json.dumps({'key': key_wif, 'address': address})  
-    return Result
+    return json.dumps({'key': key_wif, 'address': address}) 
 
 def get_address(key:str):
     key = Key(key)
-    Result = key.address
-    return Result
+    return key.address
 
 def get_balance(key:str):
-    try:
-        key = Key(key)
-        btc_balance = key.get_balance('btc')
-        usd_balance = key.get_balance('usd')
-        rub_balance = key.get_balance('rub')
-        Result = json.dumps({'btc_balance': btc_balance, 'usd_balance': usd_balance, 'rub_balance': rub_balance})
+    try:  
+        Result = json.dumps({'btc_balance': Key(key).get_balance('btc'), 
+                             'usd_balance': Key(key).get_balance('usd'), 
+                             'rub_balance': Key(key).get_balance('rub')})  
+        data.add_wallet_in_db(key, get_address(key)) 
         return Result
     except Exception as e:
-        Result = json.dumps({'btc_balance': 'error', 'usd_balance': 'error', 'rub_balance': 'error'})
-        return Result
-
-
+        print(e)
+        return json.dumps({'btc_balance': 'error', 'usd_balance': 'error', 'rub_balance': 'error'})
+        
 def transaction(key:str, address:str, summ:float, fee:float):
     try:
-        transaction = key.create_transaction([(address, summ, 'btc')],
-                fee=currency_to_satoshi(fee, 'btc'), absolute_fee=True)
-        sign = key.sign_transaction(transaction)
-        return sign
-    except Exception as e:
-        return 'error'
-        
+        key = Key(key)
+        summ = int(float(summ / 100000000.0))
+        fee = int(float(fee / 100000000.0))
+        transaction = key.send([(address, summ, 'btc')],
+                fee=fee, absolute_fee=True)
+        return json.dumps({'transaction': transaction})
+    except Exception as Error:
+        print(Error)
+        return json.dumps({'transaction': 'error'})       

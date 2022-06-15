@@ -7,7 +7,11 @@ async function copy(copy_area) {
 //обработка кнопки generate wallet
 var button = document.getElementById("btn_generate");
 button.onclick = async function send_click() {
+    //загрузка
+    load_page();
     let result_g = await eel.generate_wallet()();
+    //удаление загрузки
+    document.getElementById('preloader').remove();
     //кнопка распечатать
     let print = document.createElement('button');
     print.setAttribute('id',"btn_print");
