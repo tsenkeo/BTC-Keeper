@@ -1,11 +1,18 @@
+
+
+function delete_element(element_id) {
+    for (let i = 0; i < element_id.length; i += 1) {
+        var element = document.getElementById(element_id[i]);
+        element.remove();
+    }
+}
+
 //обработка кнопки send btc
 var button = document.getElementById("btn_send");
 button.onclick = async function send_click() {
     //удаление кнопок
-    var delete_button = document.getElementById("btn_generate");
-    delete_button.remove();
-    var delete_button = document.getElementById("btn_send");
-    delete_button.remove();
+    delete_element(["btn_generate", "btn_send", "start_description"]);
+
     //кнопка back 
     let back = document.createElement('button');
     back.setAttribute('id', "btn_back");

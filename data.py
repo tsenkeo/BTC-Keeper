@@ -1,31 +1,36 @@
-import sqlite3, json
+import json
+import sqlite3
 
-def create_base(db):
-    cursor = db.cursor()
-    cursor.execute(f'''CREATE TABLE IF NOT EXISTS WALLETS(ID TEXT NOT NULL, KEY TEXT NOT NULL, ADDRESS TEXT NOT NULL);''')
-    db.commit()
 
-with sqlite3.connect('wallets.db', check_same_thread=False) as db: #:memory:
+def create_base(database):
+    cursor = database.cursor()
+    cursor.execute(f'CREATE TABLE IF NOT EXISTS WALLETS(ID TEXT NOT NULL, KEY TEXT NOT NULL, ADDRESS TEXT NOT NULL);')
+    database.commit()
+
+
+with sqlite3.connect('wallets.db', check_same_thread=False) as db:  #:memory:
     db = db
     create_base(db)
 
+
 def cur():
     cursor = db.cursor()
-    return cursor 
+    return cursor
 
-def add_wallet_in_db(key:str, address:str):  
+
+def add_wallet_in_db(key: str, address: str):
     cursor = cur()
     cursor.execute(f'''SELECT * FROM "WALLETS" WHERE "ID" = "1";''')
     data = cursor.fetchone()
     if data is None:
-            cursor.execute(f'INSERT INTO "WALLETS"("ID", "KEY", "ADDRESS") VALUES("1", "{key}", "{address}");')
-            db.commit()
+        cursor.execute(f'INSERT INTO "WALLETS"("ID", "KEY", "ADDRESS") VALUES("1", "{key}", "{address}");')
+        db.commit()
     elif data is not None:
-            cursor.executescript(f'''DELETE FROM "WALLETS" WHERE "ID" = "1";
+        cursor.executescript(f'''DELETE FROM "WALLETS" WHERE "ID" = "1";
                                     INSERT INTO "WALLETS"("ID", "KEY", "ADDRESS") VALUES("1", "{key}", "{address}");''')
-            db.commit()
-    
-    
+        db.commit()
+
+
 def request_wallet():
     cursor = cur()
     cursor.execute(f'''SELECT * FROM "WALLETS" WHERE "ID" = "1";''')
